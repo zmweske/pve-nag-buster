@@ -31,6 +31,9 @@ if grep -qs "$NAGTOKEN" "$NAGFILE" > /dev/null 2>&1; then
   systemctl restart pveproxy.service
 fi
 
+# replace top-left logo href/url with domain root
+sed -i "s|href: 'https://www.proxmox.com',|href: '/',|g" "$NAGFILE"
+
 # disable paid repo list
 
 PAID_BASE="/etc/apt/sources.list.d/pve-enterprise"
